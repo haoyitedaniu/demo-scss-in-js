@@ -1,0 +1,28 @@
+{
+	"extends": "stylelint-config-standard",
+	"rules": {
+		"at-rule-no-unknown": [
+			true,
+			{
+				"ignoreAtRules": ["extends", "tailwind"]
+			}
+		],
+		"property-no-unknown": [
+			true,
+			{
+				"ignoreProperties": ["'composes", "'compose-with"],
+				"ignoreSelectors": [":export", "/^:import/"]
+			}
+		],
+		"indentation": [
+			2,
+			{
+				"except": ["value"],
+				"reportDisables": true
+			}
+		],
+		"block-no-empty": null,
+		"unit-whitelist": ["em", "rem", "s", "px"],
+		"font-family-no-missing-generic-family-keyword": true
+	}
+}
