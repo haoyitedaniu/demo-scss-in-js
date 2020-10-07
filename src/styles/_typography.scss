@@ -1,0 +1,21 @@
+@import "./config";
+
+h4 {
+	@extend %graphik-regular;
+
+	color: $black; //variable $black imported from ./config
+	font-size: rem(16px); //convert from px to rem
+	letter-spacing: $base-letter-spacing; //variable $base-letter-spacing imported from ./config
+	line-height: 1.625;
+
+	@media screen and (min-width: $tablet) {
+		//mixin to set min-width
+		font-size: rem(20px);
+		line-height: 1.2;
+	}
+}
+
+@mixin fontSize($size) {
+	font-size: $size; //Fallback in px
+	font-size: calculateRem($size);
+}

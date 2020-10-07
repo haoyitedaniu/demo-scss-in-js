@@ -1,0 +1,10 @@
+// SCSS function to strip off the px units from variables before exporting.
+// if the variable value has px in it. e.g. "10px"
+
+@function removePx($var) {
+	@return $var / 1px - 1;
+}
+@function calculateRem($size) {
+	$remSize: $size / 16px;
+	@return #{$remSize}rem;
+}

@@ -43,8 +43,10 @@ const imageInlineSizeLimit = parseInt(process.env.IMAGE_INLINE_SIZE_LIMIT || "10
 const useTypeScript = fs.existsSync(paths.appTsConfig);
 
 // style files regexes
+// const cssRegex = /\.global\.css$/;
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
+// const sassRegex = /\.global\.(scss|sass)$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
@@ -463,14 +465,19 @@ module.exports = function (webpackEnv) {
 						// using the extension .module.css
 						{
 							test: cssModuleRegex,
-							use: getStyleLoaders({
-								importLoaders: 1,
-								sourceMap: isEnvProduction && shouldUseSourceMap,
-								// camelCase: true,
-								modules: {
-									getLocalIdent: getCSSModuleLocalIdent,
-								},
-							}),
+							use: getStyleLoaders(
+								{
+									importLoaders: 1,
+									sourceMap: isEnvProduction && shouldUseSourceMap,
+									// camelCase: true,
+									modules: {
+										getLocalIdent: getCSSModuleLocalIdent,
+									},
+								}
+								//instead of css-loader
+								//use "typings-for-css-modules-loader?modules"
+								// "typings-for-css-modules-loader"
+							),
 						},
 						// Opt-in support for SASS (using .scss or .sass extensions).
 						// By default we support SASS Modules with the
@@ -506,6 +513,8 @@ module.exports = function (webpackEnv) {
 									},
 								},
 								"sass-loader"
+								// "typings-for-css-modules-loader?modules&sass"
+								// "typings-for-css-modules-loader"
 							),
 						},
 						// "file" loader makes sure those assets get served by WebpackDevServer.
