@@ -4,6 +4,7 @@
 @function removePx($var) {
 	@return $var / 1px - 1;
 }
+
 @function calculateRem($size) {
 	$remSize: $size / 16px;
 	@return #{$remSize}rem;
