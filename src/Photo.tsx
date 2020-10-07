@@ -1,7 +1,10 @@
-import React from "react";
+import * as React from "react";
 import { getSrc, getSrcSet } from "./utils";
-import styles from "./Photo.module.css";
-import { customMedia } from "./global.css";
+// import { customMedia } from "./global.css";
+// import styles from "./Photo.module.scss";
+const styles = require("./Photo.module.scss");
+const { customMedia } = require("./global.css");
+
 const Photo = ({ publicId, alt, rounded, borderRadius }) => (
 	<figure>
 		<img
@@ -9,7 +12,8 @@ const Photo = ({ publicId, alt, rounded, borderRadius }) => (
 			style={
 				typeof borderRadius !== "undefined"
 					? {
-							["--border-radius"]: borderRadius,
+							// ["--border-radius"]: borderRadius,
+							borderRadius: borderRadius,
 					  }
 					: null
 			}

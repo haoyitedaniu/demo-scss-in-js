@@ -14,5 +14,5 @@
 }
 
 .caption {
-	composes: visuallyHidden from './utils.module.css';
+	composes: visuallyHidden from "./utils.module.scss";
 }
